@@ -8,7 +8,46 @@ on:
 permissions:
   contents: write
 
+jobs:name: CI/CD for React App
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npx eslint . --ext .js,.jsx
+
+      - name: Run Unit Tests
+        run: npm test
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy
+        run: |
+          # Add your deployment commands here
+          echo "Deployment steps go here"
+
   build_and_deploy:
     runs-on: ubuntu-latest
 
