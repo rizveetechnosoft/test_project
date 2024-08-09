@@ -34,5 +34,10 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
+            sudo apt install npm
             cd home
+            npm i
+            npm run build 
             sudo mv * /var/www/html
+            
+/html
