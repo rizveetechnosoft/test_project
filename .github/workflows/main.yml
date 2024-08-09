@@ -38,4 +38,4 @@ jobs:
             cd home
             npm i
             npm run build 
-            sudo mv * /var/www/html
+            sudo mv build /var/www/html
